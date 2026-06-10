@@ -18,21 +18,28 @@
     <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-indigo-600/20 blur-[120px] glow-bg"></div>
     <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-purple-600/20 blur-[120px] glow-bg" style="animation-delay: 4s;"></div>
 
-    <main class="w-full max-w-md mx-4 z-10">
+    <main class="w-full max-w-md mx-4 z-10 transition-all duration-500">
         
         <div id="quiz-view" class="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-3xl p-8 shadow-2xl shadow-indigo-950/20">
-            <div class="text-center mb-8">
+            <div class="text-center mb-6">
                 <span class="text-xs font-semibold tracking-widest uppercase bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Cognitive Science Labs</span>
                 <h1 class="text-3xl font-bold tracking-tight mt-2 text-white">What does your name say about you?</h1>
                 <p class="text-slate-400 text-sm mt-3 leading-relaxed">Backed by dataset modeling of over 1.4 million linguistic profiles. Discover your core subconscious personality trait.</p>
             </div>
 
-            <div class="bg-slate-950/50 border border-slate-800/60 rounded-xl p-3 flex items-center justify-between mb-8 text-xs text-slate-400">
+            <div class="mb-6 bg-slate-950/40 border border-slate-800/80 rounded-xl p-3 flex items-center gap-2.5 text-[11px] text-slate-400">
+                <svg class="w-4 h-4 text-slate-400 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12.24 10.285V14.4h6.887c-.648 2.41-2.519 4.114-6.887 4.114-4.647 0-8.435-3.803-8.435-8.514 0-4.71 3.788-8.514 8.435-8.514 2.457 0 4.542.88 6.133 2.427L21.353 1.1C18.932-.977 15.772-2.2 12.24-2.2c-7.214 0-13 5.748-13 12.7s5.786 12.7 13 12.7c6.643 0 11.571-4.634 11.571-11.3 0-.668-.078-1.32-.195-1.915H12.24z"/>
+                </svg>
+                <span>Cross-referenced via <strong class="text-slate-200">Google Research API</strong> Neural Onomastic Dataset (Ref: G-ROD-2026.04).</span>
+            </div>
+
+            <div class="bg-slate-950/60 border border-slate-800/60 rounded-xl p-3 flex items-center justify-between mb-6 text-xs text-slate-400">
                 <div class="flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                     <span>Live Analysis Engine</span>
                 </div>
-                <div><strong class="text-indigo-400">2,481</strong> people analyzed today</div>
+                <div><strong class="text-indigo-400">2,481</strong> targets processed today</div>
             </div>
 
             <form id="quiz-form" class="space-y-5">
@@ -41,7 +48,6 @@
                     <input type="text" id="username" required autocomplete="off" placeholder="e.g., Alexander" 
                            class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3.5 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-base">
                 </div>
-                
                 <button type="submit" class="w-full bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-medium py-3.5 px-4 rounded-xl shadow-lg shadow-indigo-500/20 active:scale-[0.99] transition-all flex items-center justify-center gap-2">
                     <span>Begin Psychometric Scan</span>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
@@ -66,26 +72,37 @@
             <p class="text-slate-400 text-sm">Generating your full deep-dive breakdown summary...</p>
         </div>
 
-        <div id="admin-view" class="hidden bg-slate-900 border border-slate-800 rounded-3xl p-6 w-full max-w-2xl shadow-2xl">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+        <div id="admin-view" class="hidden bg-slate-900 border border-slate-800 rounded-3xl p-6 w-full shadow-2xl">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-5">
                 <div>
                     <h1 class="text-xl font-bold text-white">Rickroll HQ Control Panel</h1>
-                    <p class="text-slate-400 text-xs">Target Log Database</p>
+                    <p class="text-slate-400 text-xs">Target Log Database Engine</p>
                 </div>
                 <button onclick="window.location.reload()" class="text-xs bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded-lg transition-all">Log Out</button>
             </div>
+
+            <div class="grid grid-cols-2 gap-4 mb-5">
+                <div class="bg-slate-950 border border-slate-800/80 p-4 rounded-xl">
+                    <span class="text-[11px] text-slate-400 block uppercase tracking-wider font-semibold">Total Victims Logged</span>
+                    <span id="admin-total-counter" class="text-3xl font-extrabold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">0</span>
+                </div>
+                <div class="bg-slate-950 border border-slate-800/80 p-4 rounded-xl flex items-center justify-end">
+                    <span class="text-xs text-emerald-400 font-medium tracking-wide flex items-center gap-1.5 bg-emerald-950/30 px-3 py-1.5 rounded-lg border border-emerald-900/40">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span> Live Cloud Synced
+                    </span>
+                </div>
+            </div>
             
-            <div class="overflow-x-auto max-h-[400px] overflow-y-auto rounded-xl bg-slate-950 border border-slate-800">
+            <div class="overflow-x-auto max-h-[350px] overflow-y-auto rounded-xl bg-slate-950 border border-slate-800">
                 <table class="w-full text-left text-sm text-slate-300">
                     <thead class="bg-slate-900 text-xs uppercase tracking-wider text-slate-400 sticky top-0">
                         <tr>
                             <th class="px-4 py-3">Victim Name</th>
                             <th class="px-4 py-3">Date</th>
-                            <th class="px-4 py-3">Time (UTC)</th>
+                            <th class="px-4 py-3">Time</th>
                         </tr>
                     </thead>
-                    <tbody id="admin-table-body" class="divide-y divide-slate-800/50">
-                        </tbody>
+                    <tbody id="admin-table-body" class="divide-y divide-slate-800/50"></tbody>
                 </table>
             </div>
         </div>
@@ -98,12 +115,12 @@
 
         const quizForm = document.getElementById('quiz-form');
         const usernameInput = document.getElementById('username');
-        
         const quizView = document.getElementById('quiz-view');
         const loadingView = document.getElementById('loading-view');
         const resultView = document.getElementById('result-view');
         const adminView = document.getElementById('admin-view');
         const adminTableBody = document.getElementById('admin-table-body');
+        const adminTotalCounter = document.getElementById('admin-total-counter');
         const resultText = document.getElementById('result-text');
 
         quizForm.addEventListener('submit', async (e) => {
@@ -111,22 +128,19 @@
             const name = usernameInput.value.trim();
             if (!name) return;
 
-            // Admin bypass check
             if (name === "ivan0208xd") {
                 quizView.classList.add('hidden');
                 adminView.classList.remove('hidden');
-                // Change layout sizing to fit table
-                document.querySelector('main').classList.remove('max-w-md');
-                document.querySelector('main').classList.add('max-w-2xl');
+                const mainContainer = document.querySelector('main');
+                mainContainer.classList.remove('max-w-md');
+                mainContainer.classList.add('max-w-2xl');
                 loadAdminLogs();
                 return;
             }
 
-            // Normal Flow: Start Fake Analysis
             quizView.classList.add('hidden');
             loadingView.classList.remove('hidden');
 
-            // 1. Log to server silently
             try {
                 await fetch('/api/rickroll', {
                     method: 'POST',
@@ -134,39 +148,35 @@
                     body: JSON.stringify({ name })
                 });
             } catch (err) {
-                console.error("Logging error: ", err);
+                console.error("Tracking caught error: ", err);
             }
 
-            // 2. Fake loading screen delay
             setTimeout(() => {
                 loadingView.classList.add('hidden');
-                
-                // Select a random trait
                 const randomTrait = TRAITS[Math.floor(Math.random() * TRAITS.length)];
                 resultText.textContent = `${name}, you are ${randomTrait}.`;
                 resultView.classList.remove('hidden');
 
-                // 3. Flash result for 2 seconds then redirect
                 setTimeout(() => {
                     window.location.href = RICKROLL_URL;
                 }, 2000);
-
             }, 1800);
         });
 
         async function loadAdminLogs() {
             try {
                 const response = await fetch('/api/admin-logs');
-                const logs = await response.json();
+                const data = await response.json();
                 
+                adminTotalCounter.textContent = data.total || 0;
                 adminTableBody.innerHTML = '';
-                if(logs.length === 0) {
-                    adminTableBody.innerHTML = `<tr><td colspan="3" class="text-center py-8 text-slate-500">No victims yet. Share your link!</td></tr>`;
+                
+                if(!data.logs || data.logs.length === 0) {
+                    adminTableBody.innerHTML = `<tr><td colspan="3" class="text-center py-8 text-slate-500">No data points acquired yet.</td></tr>`;
                     return;
                 }
 
-                // Reverse logs to see newest first
-                logs.reverse().forEach(entry => {
+                data.logs.forEach(entry => {
                     const dateObj = new Date(entry.timestamp);
                     const date = dateObj.toLocaleDateString();
                     const time = dateObj.toLocaleTimeString();
@@ -181,7 +191,7 @@
                     adminTableBody.appendChild(row);
                 });
             } catch (err) {
-                adminTableBody.innerHTML = `<tr><td colspan="3" class="text-center py-8 text-red-400">Failed to load logs.</td></tr>`;
+                adminTableBody.innerHTML = `<tr><td colspan="3" class="text-center py-8 text-red-400">Failed to connect to cloud stream.</td></tr>`;
             }
         }
 
